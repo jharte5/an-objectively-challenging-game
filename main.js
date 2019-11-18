@@ -6,5 +6,6 @@ document.getElementById("fight").addEventListener("click", getAttackDamage);
 monster.hitPoints - getAttackDamage
 
 function attackRound (getAttackDamage) {
-    
+    players.hitPoints = players.hitPoints - getAttackDamage(min, max)
+
 }
