@@ -29,8 +29,10 @@ function attackRound() {
             document.querySelector('#results').innerText = `You and the monster trade blows!`;
         }
     }
-    // somehow update the health bars
+    updateHealthBar()
+    
 }
+
 
 function updatePlayerTxt(dmg) {
     let playerDmgTxt = '';
@@ -58,4 +60,15 @@ function updateMonsterTxt(dmg) {
 }
 
     document.querySelector('#monster-damage-taken').innerText = monsterDmgTxt;
+    }
+
+function updateHealthBar () {
+    document.querySelector('#player-health').innerText = `${player.hitPoints}`;
+    document.querySelector('#player-health').style.width = `${player.hitPoints * 2}px`
+    document.querySelector('#monster-health').innerText = `${monster.hitPoints}`;
+    document.querySelector('#monster-health').style.width = `${monster.hitPoints * 2}px`
+    document.querySelector('player').style
+    player.hitPoints = playerLife
+    monster.hitPoints = monsterLife
+
 }
