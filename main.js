@@ -6,6 +6,7 @@ let currentMonster = monster;
 
 document.querySelector("#fight").addEventListener("click", attackRound);
 
+
 function attackRound() {
     const playerDmg = getAttackDamage(player.attackMin, player.attackMax);
     updatePlayerTxt(playerDmg);
@@ -24,7 +25,7 @@ function attackRound() {
         player.hitPoints -= monsterDmg;
         if (player.hitPoints <= 0) {
             document.querySelector('#results').innerText = 'You died! Game over...';
-            // create a reset function and insert here
+            startOver()
         } else {
             document.querySelector('#results').innerText = `You and the monster trade blows!`;
         }
@@ -64,11 +65,22 @@ function updateMonsterTxt(dmg) {
 
 function updateHealthBar () {
     document.querySelector('#player-health').innerText = `${player.hitPoints}`;
-    document.querySelector('#player-health').style.width = `${player.hitPoints * 2}px`
+    document.querySelector('#player-health').style.width = `${player.hitPoints * 1}px`
     document.querySelector('#monster-health').innerText = `${monster.hitPoints}`;
     document.querySelector('#monster-health').style.width = `${monster.hitPoints * 2}px`
-    document.querySelector('player').style
+    document.querySelector('player').style.rotate(Math.PI/2);
     player.hitPoints = playerLife
     monster.hitPoints = monsterLife
+}
 
+function startOver () {
+    document.querySelector('#fight').innerText = 'Start Over'
+    document.querySelector("#fight").addEventListener("click", attackRound);
+    document.querySelector('#fight').innerText = 'Fight';
+
+    player.hitPoints = 100;
+    monster.hitPoints = 30;
+    boss.hitPoints = 50;
+    currentMonster = monster;
+    updateHealthBar()
 }

@@ -1,11 +1,11 @@
 const monster = {
     hitPoints: 30,
-    attackMin: 3,
-    attackMax: 6,
+    attackMin: 7,
+    attackMax: 12,
 
 }
 const boss = {
     hitPoints: 50,
-    attackMin: 5,
-    attackMax: 9,
+    attackMin: 9,
+    attackMax: 15,
 }
