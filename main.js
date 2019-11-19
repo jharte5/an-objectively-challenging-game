@@ -16,13 +16,13 @@ function attackRound() {
         if (currentMonster === monster) {
             document.querySelector('#results').innerText = 'You slayed the monster! But here comes the boss...';
             currentMonster = boss;
-            document.querySelector('#monster').style.display = 'none';
+            document.querySelector('#monster').style.height = '1px';
+            document.querySelector('#monster').style.width = '1px';
             document.querySelector('#boss').style.height = '200px';
             document.querySelector('#boss').style.width = '200px';
         } else {
             document.querySelector('#results').innerText = 'You beat all the monsters! You win!';
             startOver()
-            
         }
     } else {
         const monsterDmg = getAttackDamage(currentMonster.attackMin, currentMonster.attackMax);
@@ -31,7 +31,6 @@ function attackRound() {
         if (player.hitPoints <= 0) {
             document.querySelector('#results').innerText = 'You died! Game over...';
             startOver()
-            
         } else {
             document.querySelector('#results').innerText = `You and the monster trade blows!`;
         }
@@ -82,6 +81,11 @@ function updateHealthBar () {
 function startOver () {
     document.querySelector('#fight').innerText = 'Start Over';
     document.querySelector('#fight').onclick = fight;
+
+    document.querySelector('#monster').style.width = '200px';
+    document.querySelector('#monster').style.height = '200px';
+    document.querySelector('#boss').style.width = '1px';
+    document.querySelector('#boss').style.height = '1px';
 
     player.hitPoints = 100;
     monster.hitPoints = 30;
