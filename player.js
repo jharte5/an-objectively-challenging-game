@@ -1,5 +1,5 @@
 const player = {
     hitPoints: 100,
-    attackMin: 1,
+    attackMin: 4,
     attackMax: 10,
 }
