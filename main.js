@@ -65,15 +65,15 @@ function updateMonsterTxt(dmg) {
     let monsterDmgTxt = '';
 
     if (dmg < 1) {
-    monsterDmgTxt += `The monster barely scratched you with ${dmg}.`;
+        monsterDmgTxt += `The monster barely scratched you with ${dmg}.`;
     } else if (dmg < 4) {
-    monsterDmgTxt += `The monster hit you for ${dmg}`;
-} else {
-    monsterDmgTxt += `The monster clobbered you with ${dmg}.`;
-}
-
-    document.querySelector('#monster-damage-taken').innerText = monsterDmgTxt;
+        monsterDmgTxt += `The monster hit you for ${dmg}`;
+    } else {
+        monsterDmgTxt += `The monster clobbered you with ${dmg}.`;
     }
+
+document.querySelector('#monster-damage-taken').innerText = monsterDmgTxt;
+}
 
 function updateHealthBar () {
     playerHealth.innerText = `${player.hitPoints}`;
