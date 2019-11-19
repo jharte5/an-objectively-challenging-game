@@ -2,9 +2,16 @@ function getAttackDamage(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+const resultQ = document.querySelector('#results');
+const monsterQ = document.querySelector('#monster');
+const bossQ = document.querySelector('#boss');
+const fightQ = document.querySelector("#fight");
+const playerHealth = document.querySelector('#player-health');
+const monsterHealth = document.querySelector('#monster-health')
+
 let currentMonster = monster;
 
-document.querySelector("#fight").addEventListener("click", attackRound);
+fightQ.addEventListener("click", attackRound);
 
 
 function attackRound() {
@@ -14,14 +21,14 @@ function attackRound() {
 
     if (currentMonster.hitPoints <= 0) {
         if (currentMonster === monster) {
-            document.querySelector('#results').innerText = 'You slayed the monster! But here comes the boss...';
+            resultQ.innerText = 'You slayed the monster! But here comes the boss...';
             currentMonster = boss;
-            document.querySelector('#monster').style.height = '1px';
-            document.querySelector('#monster').style.width = '1px';
-            document.querySelector('#boss').style.height = '200px';
-            document.querySelector('#boss').style.width = '200px';
+            monsterQ.style.height = '1px';
+            monsterQ.style.width = '1px';
+            bossQ.style.height = '200px';
+            bossQ.style.width = '200px';
         } else {
-            document.querySelector('#results').innerText = 'You beat all the monsters! You win!';
+            resultQ.innerText = 'You beat all the monsters! You win!';
             startOver()
         }
     } else {
@@ -29,10 +36,10 @@ function attackRound() {
         updateMonsterTxt(monsterDmg);
         player.hitPoints -= monsterDmg;
         if (player.hitPoints <= 0) {
-            document.querySelector('#results').innerText = 'You died! Game over...';
+            resultQ.innerText = 'You died! Game over...';
             startOver()
         } else {
-            document.querySelector('#results').innerText = `You and the monster trade blows!`;
+            resultQ.innerText = `You and the monster trade blows!`;
         }
     }
     updateHealthBar()
@@ -69,23 +76,23 @@ function updateMonsterTxt(dmg) {
     }
 
 function updateHealthBar () {
-    document.querySelector('#player-health').innerText = `${player.hitPoints}`;
-    document.querySelector('#player-health').style.width = `${player.hitPoints * 2}px`;
+    playerHealth.innerText = `${player.hitPoints}`;
+    playerHealth.style.width = `${player.hitPoints * 2}px`;
 
-    document.querySelector('#monster-health').innerText = `${currentMonster.hitPoints}`;
-    document.querySelector('#monster-health').style.width = `${currentMonster.hitPoints * 2}px`;
+    monsterHealth.innerText = `${currentMonster.hitPoints}`;
+    monsterHealth.style.width = `${currentMonster.hitPoints * 2}px`;
 
     // document.querySelector('player').style.rotate(Math.PI/2);
 }
 
 function startOver () {
-    document.querySelector('#fight').innerText = 'Start Over';
-    document.querySelector('#fight').onclick = fight;
+    fightQ.innerText = 'Start Over';
+    fightQ.onclick = fight;
 
-    document.querySelector('#monster').style.width = '200px';
-    document.querySelector('#monster').style.height = '200px';
-    document.querySelector('#boss').style.width = '1px';
-    document.querySelector('#boss').style.height = '1px';
+    monsterQ.style.width = '200px';
+    monsterQ.style.height = '200px';
+    bossQ.style.width = '1px';
+    bossQ.style.height = '1px';
 
     player.hitPoints = 100;
     monster.hitPoints = 30;
@@ -96,6 +103,6 @@ function startOver () {
 }
 
 function fight () {
-    document.querySelector('#fight').innerText = 'Fight';
-    document.querySelector('#fight').onclick = attackRound;
+    fightQ.innerText = 'Fight';
+    fightQ.onclick = attackRound;
 }
