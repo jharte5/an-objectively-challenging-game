@@ -16,6 +16,9 @@ function attackRound() {
         if (currentMonster === monster) {
             document.querySelector('#results').innerText = 'You slayed the monster! But here comes the boss...';
             currentMonster = boss;
+            document.querySelector('#monster').style.display = 'none';
+            document.querySelector('#boss').style.height = '200px';
+            document.querySelector('#boss').style.width = '200px';
         } else {
             document.querySelector('#results').innerText = 'You beat all the monsters! You win!';
             startOver()
@@ -68,26 +71,27 @@ function updateMonsterTxt(dmg) {
 
 function updateHealthBar () {
     document.querySelector('#player-health').innerText = `${player.hitPoints}`;
-    document.querySelector('#player-health').style.width = `${player.hitPoints * 2}px`
+    document.querySelector('#player-health').style.width = `${player.hitPoints * 2}px`;
+
     document.querySelector('#monster-health').innerText = `${currentMonster.hitPoints}`;
-    document.querySelector('#monster-health').style.width = `${currentMonster.hitPoints * 2}px`
-    document.querySelector('player').style.rotate(Math.PI/2);
-    player.hitPoints = playerLife
-    monster.hitPoints = monsterLife
+    document.querySelector('#monster-health').style.width = `${currentMonster.hitPoints * 2}px`;
+
+    // document.querySelector('player').style.rotate(Math.PI/2);
 }
 
 function startOver () {
-    document.querySelector('#fight').innerText = 'Start Over'
-    document.querySelector('#fight').onclick = fight
-    
+    document.querySelector('#fight').innerText = 'Start Over';
+    document.querySelector('#fight').onclick = fight;
 
     player.hitPoints = 100;
     monster.hitPoints = 30;
     boss.hitPoints = 50;
     currentMonster = monster;
-    updateHealthBar()
+
+    updateHealthBar();
 }
+
 function fight () {
-    document.querySelector('#fight').innerText = 'Fight'
-    document.querySelector('#fight').onclick = attackRound
+    document.querySelector('#fight').innerText = 'Fight';
+    document.querySelector('#fight').onclick = attackRound;
 }

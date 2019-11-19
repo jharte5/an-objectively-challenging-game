@@ -9,13 +9,23 @@
   </head>
   <body>
     <section id="app">
-      <div id="player-health" class="health-bar">100</div>
-      <img id="player" src="mario.png"></div>
-      <div id="monster-health" class="health-bar">30</div>
-      <div id="player-damage-taken">&nbsp</div>
-      <div id="monster-damage-taken">&nbsp</div>
-      <button id="fight">Fight</button>
-      <div id="results">Let the battle begin!</div>
+      <div id="player-enemy">
+        <div id="player-health" class="health-bar">100</div>
+      <div id="player">
+        <img id="player" src="player.jpeg">
+      </div>
+        <div id="monster-health" class="health-bar">30</div>
+      <div id="enemy">
+        <img id="monster" src="monster.jpg">
+        <img id="boss" src="boss.png">
+      </div>
+      </div>
+      <div id="info">
+        <div id="player-damage-taken">&nbsp</div>
+        <div id="monster-damage-taken">&nbsp</div>
+        <button id="fight">Fight</button>
+        <div id="results">Let the battle begin!</div>
+      </div>
     </section>
     <script src="enemies.js"></script>
     <script src="player.js"></script>

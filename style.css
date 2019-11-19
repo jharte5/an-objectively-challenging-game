@@ -19,4 +19,21 @@
 
 img {
     padding: 30px;
+    height: 200px;
+    width: 200px;
+}
+
+#player-enemy {
+    display: flex;
+    justify-content: center;
+}
+
+#boss {
+    height: 1px;
+    width: 1px;
+}
+
+#info {
+    text-align: center;
+    font-size: 50px;
 }
